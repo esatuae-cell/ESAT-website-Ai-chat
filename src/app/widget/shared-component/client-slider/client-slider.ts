@@ -24,7 +24,7 @@ export class ClientSlider implements AfterViewInit, OnDestroy {
     this.isBrowser = isPlatformBrowser(this.platformId);
 
     // Load client logos in order
-    for (let i = 1; i <= 59; i++) {
+    for (let i = 1; i <= 61; i++) {
       this.logos.push(`assets/images/clients/logo${i}.png`);
     }
 
