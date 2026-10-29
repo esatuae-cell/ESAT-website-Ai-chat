@@ -575,8 +575,8 @@
 }
 .wp-chat {
   position: fixed;
-  bottom: 10vh;
-  right: 0%;
+  bottom: 15vh;
+  right: -2%;
   object-fit: cover;
 }
 .wp-chat img {
@@ -730,7 +730,7 @@
 
 .back-to-top {
   position: fixed;
-  right: 25px;
+  right: 120px;
   bottom: 25px;
   width: 45px;
   height: 45px;

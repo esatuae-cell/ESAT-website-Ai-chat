@@ -1,11 +1,13 @@
-import { Component, signal, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, signal, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
+
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { Footer } from '../app/widget/common/footer/footer';
 import { Header } from '../app/widget/common/header/header';
 import { routes } from './app.routes';
 import AOS from 'aos';
-// import 'aos/dist/aos.css';
 import { isPlatformBrowser } from '@angular/common';
+import { ChatBox } from './widget/shared-component/chat-box/chat-box';
+import { TawkChatService } from './services/tawk-chat';
 
 export const appRoutes = routes;
 
@@ -15,18 +17,19 @@ export const appRoutes = routes;
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
-export class App implements OnInit {
+export class App implements OnInit, AfterViewInit {
   showAboutMenu = false;
 
   protected readonly title = signal('ESATWEBSITE');
 
   constructor(
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    private tawkChatService: TawkChatService,
+    @Inject(PLATFORM_ID) private platformId: object,
   ) {}
 
   ngOnInit(): void {
-    // ✅ RUN ONLY IN BROWSER
+    // Run AOS only in the browser
     if (isPlatformBrowser(this.platformId)) {
       AOS.init({
         duration: 1000,
@@ -42,5 +45,10 @@ export class App implements OnInit {
         }
       });
     }
+  }
+
+  ngAfterViewInit(): void {
+    // Load Tawk.to chat widget only in the browser
+    this.tawkChatService.load();
   }
 }

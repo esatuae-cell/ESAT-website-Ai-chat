@@ -5,7 +5,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
-import { AiChatService } from '../../../services/ai-chat.service';
 
 @Component({
   selector: 'app-footer',
@@ -26,7 +25,7 @@ export class Footer {
 
   constructor(
     private router: Router,
-    private aiChatService: AiChatService,
+
     @Inject(PLATFORM_ID) private platformId: object,
   ) {}
 
@@ -77,29 +76,6 @@ export class Footer {
     });
 
     this.message = '';
-
-    this.aiChatService.sendMessage(userMessage).subscribe({
-      next: (response) => {
-        console.log('2. PHP RESPONSE:', response);
-
-        this.messages.push({
-          sender: 'bot',
-          text: response.output_text || 'Empty response from server',
-        });
-      },
-
-      error: (error) => {
-        console.error('3. API ERROR:', error);
-        console.error('STATUS:', error.status);
-        console.error('ERROR:', error.error);
-        console.error('MESSAGE:', error.message);
-
-        this.messages.push({
-          sender: 'bot',
-          text: 'API Error: ' + (error.error?.error || error.message || 'Unknown error'),
-        });
-      },
-    });
   }
 
   // Ai chart service integration end

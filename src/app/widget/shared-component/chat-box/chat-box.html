@@ -1,0 +1,64 @@
+<!-- Floating chat button -->
+<button
+  class="chat-launcher"
+  type="button"
+  (click)="toggleChat()"
+  [attr.aria-label]="isOpen ? 'Close chat' : 'Open AI chat'"
+  [attr.aria-expanded]="isOpen"
+>
+  <span>{{ isOpen ? '×' : '✦' }}</span>
+</button>
+
+<!-- Chat window -->
+<section class="chat-window" *ngIf="isOpen" aria-label="ESAT AI assistant">
+  <header class="chat-header">
+    <div class="chat-brand">
+      <div class="bot-avatar">E</div>
+      <div>
+        <strong>ESAT Assistant</strong>
+        <small>AI-powered support</small>
+      </div>
+    </div>
+
+    <button type="button" class="close-btn" (click)="toggleChat()" aria-label="Close chat">
+      ×
+    </button>
+  </header>
+
+  <div class="chat-messages" aria-live="polite">
+    <div *ngFor="let item of messages" class="message-row" [class.user-row]="item.role === 'user'">
+      <div class="message-bubble" [class.user-bubble]="item.role === 'user'">
+        {{ item.text }}
+      </div>
+    </div>
+
+    <div class="message-row" *ngIf="isLoading">
+      <div class="message-bubble typing">Thinking...</div>
+    </div>
+  </div>
+
+  <div class="suggestions" *ngIf="messages.length === 1">
+    <button type="button" *ngFor="let question of suggestions" (click)="askQuestion(question)">
+      {{ question }}
+    </button>
+  </div>
+
+  <form class="chat-input" (ngSubmit)="sendMessage()">
+    <input
+      type="text"
+      name="message"
+      [(ngModel)]="message"
+      placeholder="Ask me anything..."
+      autocomplete="off"
+      maxlength="2000"
+      [disabled]="isLoading"
+      aria-label="Your message"
+    />
+
+    <button type="submit" [disabled]="!message.trim() || isLoading" aria-label="Send message">
+      ➤
+    </button>
+  </form>
+
+  <footer class="chat-footer">AI-generated answers may be inaccurate.</footer>
+</section>
