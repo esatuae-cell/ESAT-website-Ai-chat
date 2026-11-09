@@ -1,0 +1,146 @@
+<!-- Floating Chat Button -->
+<button
+  class="ai-chat-launcher"
+  type="button"
+  (click)="toggleChat()"
+  [attr.aria-expanded]="isOpen()"
+  aria-label="Open ESAT AI assistant"
+>
+  @if (!isOpen()) {
+    <span class="launcher-icon">✦</span>
+    <span class="launcher-label">Ask ESAT AI</span>
+  } @else {
+    <span class="launcher-close">×</span>
+  }
+</button>
+
+<!-- Chat Window -->
+@if (isOpen()) {
+  <section class="ai-chat-window" [class.full-screen]="isFullScreen()" aria-label="ESAT AI Chat">
+    <!-- Header -->
+    <header class="ai-chat-header">
+      <div class="ai-brand">
+        <div class="ai-avatar"><img src="../../../assets/images/logo.png" class="w-100" /></div>
+
+        <div class="ai-brand-info">
+          <h3>ESAT AI Assistant</h3>
+          <span>
+            <span class="online-dot"></span>
+            Online · AI Assistant
+          </span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Full Screen Button -->
+        <button
+          type="button"
+          class="fullscreen-button"
+          (click)="toggleFullScreen()"
+          [attr.aria-label]="isFullScreen() ? 'Exit full screen' : 'Open full screen'"
+          [title]="isFullScreen() ? 'Exit full screen' : 'Full screen'"
+        >
+          @if (!isFullScreen()) {
+            <span>⛶</span>
+          } @else {
+            <span>⊡</span>
+          }
+        </button>
+
+        <!-- Close Button -->
+        <button
+          type="button"
+          class="header-close"
+          (click)="toggleChat()"
+          aria-label="Close chatbot"
+        >
+          ×
+        </button>
+      </div>
+    </header>
+
+    <!-- Welcome Banner -->
+    <div class="ai-welcome">
+      <span class="welcome-icon">✦</span>
+      <div>
+        <strong>How can we help you?</strong>
+        <p>Ask anything about ESAT ERP and our business solutions.</p>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="ai-chat-messages" #chatMessages>
+      @for (message of messages(); track $index) {
+        <div
+          class="message-row"
+          [class.user-row]="message.role === 'user'"
+          [class.ai-row]="message.role === 'assistant'"
+        >
+          @if (message.role === 'assistant') {
+            <div class="message-avatar">E</div>
+          }
+
+          <div class="message-content">
+            <div class="message-bubble">
+              {{ message.content }}
+            </div>
+
+            @if (message.sources?.length) {
+              <div class="message-sources">
+                <strong>Sources</strong>
+
+                @for (source of message.sources; track $index) {
+                  @if (source.url) {
+                    <a [href]="source.url" target="_blank" rel="noopener noreferrer">
+                      {{ source.title }}
+                      <span>↗</span>
+                    </a>
+                  }
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      @if (isLoading()) {
+        <div class="message-row ai-row">
+          <div class="message-avatar">E</div>
+
+          <div class="typing-indicator" aria-label="ESAT AI is typing">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Input Area -->
+    <form class="ai-chat-input-area" (ngSubmit)="sendMessage()">
+      <textarea
+        name="message"
+        [(ngModel)]="userMessage"
+        (keydown.enter)="handleEnter($event)"
+        placeholder="Type your question here..."
+        rows="1"
+        maxlength="2000"
+        [disabled]="isLoading()"
+        aria-label="Your message"
+      ></textarea>
+
+      <button
+        type="submit"
+        class="send-button"
+        [disabled]="!userMessage.trim() || isLoading()"
+        aria-label="Send message"
+      >
+        ➤
+      </button>
+    </form>
+
+    <footer class="ai-chat-footer">
+      Powered by ESAT AI · Please verify important information with our team.
+    </footer>
+  </section>
+}

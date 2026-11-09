@@ -1,0 +1,133 @@
+<button
+  type="button"
+  class="accessibility-trigger"
+  aria-label="Open accessibility settings"
+  aria-controls="accessibility-panel"
+  [attr.aria-expanded]="isOpen"
+  (click)="isOpen = !isOpen"
+>
+  <span aria-hidden="true">♿</span>
+</button>
+
+@if (isOpen) {
+  <section id="accessibility-panel" class="accessibility-panel" aria-label="Accessibility settings">
+    <div class="a11y-header">
+      <div class="a11y-heading-icon">
+        <i class="fa fa-wheelchair"></i>
+      </div>
+
+      <div class="a11y-heading-text">
+        <h2>Accessibility</h2>
+        <p>Personalize your experience</p>
+      </div>
+
+      <button
+        type="button"
+        class="a11y-close"
+        aria-label="Close accessibility settings"
+        (click)="isOpen = false"
+      >
+        <i class="fa fa-times text-danger"></i>
+      </button>
+    </div>
+
+    <div class="a11y-content">
+      <h3 class="a11y-section-title">DISPLAY SETTINGS</h3>
+
+      <div class="a11y-group">
+        <button class="a11y-item" type="button" (click)="changeFont(1)">
+          <span class="a11y-icon">
+            <i class="fa fa-font"></i>
+          </span>
+          <span class="a11y-label">
+            <strong>Increase text size</strong>
+            <small>Make content easier to read</small>
+          </span>
+          <i class="fa fa-chevron-right right-icon"></i>
+        </button>
+
+        <button class="a11y-item" type="button" (click)="changeFont(-1)">
+          <span class="a11y-icon">
+            <i class="fa fa-font"></i>
+          </span>
+          <span class="a11y-label">
+            <strong>Decrease text size</strong>
+            <small>Reduce content size</small>
+          </span>
+          <i class="fa fa-chevron-right"></i>
+        </button>
+
+        <button class="a11y-item" type="button" (click)="toggleContrast()">
+          <span class="a11y-icon">
+            <i class="fa fa-adjust"></i>
+          </span>
+          <span class="a11y-label">
+            <strong>High contrast</strong>
+            <small>Improve text visibility</small>
+          </span>
+        </button>
+
+        <button class="a11y-item" type="button" (click)="toggleGrayscale()">
+          <span class="a11y-icon">
+            <i class="fa fa-sliders"></i>
+          </span>
+          <span class="a11y-label">
+            <strong>Grayscale mode</strong>
+            <small>Remove page colors</small>
+          </span>
+        </button>
+
+        <button class="a11y-item" type="button" (click)="toggleLinks()">
+          <span class="a11y-icon">
+            <i class="fa fa-link"></i>
+          </span>
+          <span class="a11y-label">
+            <strong>Highlight links</strong>
+            <small>Make links easier to identify</small>
+          </span>
+        </button>
+      </div>
+
+      <h3 class="a11y-section-title">READ ALOUD</h3>
+
+      <div class="a11y-group">
+        <button class="a11y-item" type="button" (click)="readSelectedText()">
+          <span class="a11y-icon">
+            <i class="fa fa-volume-up"></i>
+          </span>
+          <span class="a11y-label">
+            <strong>Read selected text</strong>
+            <small>Listen to highlighted content</small>
+          </span>
+          <i class="fa fa-chevron-right"></i>
+        </button>
+
+        <button class="a11y-item" type="button" (click)="readPageAloud()">
+          <span class="a11y-icon">
+            <i class="fa fa-book"></i>
+          </span>
+          <span class="a11y-label">
+            <strong>Read entire page</strong>
+            <small>Listen to page content</small>
+          </span>
+          <i class="fa fa-chevron-right right-arrow"></i>
+        </button>
+
+        <button class="a11y-item" type="button" (click)="stopReading()">
+          <span class="a11y-icon a11y-stop-icon">
+            <i class="fa fa-stop-circle"></i>
+          </span>
+          <span class="a11y-label">
+            <strong>Stop audio</strong>
+            <small>Stop voice playback</small>
+          </span>
+        </button>
+      </div>
+
+      <button type="button" class="a11y-reset" (click)="resetAccessibility()">
+        <i class="fa fa-retweet"></i>
+        Reset all settings
+      </button>
+    </div>
+  </section>
+}

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ChatService } from '../../../services/ai-chat.service';
+import { AiChatService } from '../../../services/ai-chat.service';
 
 interface ChatMessage {
   role: 'user' | 'bot';
@@ -16,7 +16,7 @@ interface ChatMessage {
   imports: [CommonModule, FormsModule],
 })
 export class ChatBox {
-  private chatService = inject(ChatService);
+  private chatService = inject(AiChatService);
 
   isOpen = false;
   isLoading = false;

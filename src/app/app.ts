@@ -1,19 +1,27 @@
 import { Component, signal, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 
+import { isPlatformBrowser } from '@angular/common';
 import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+
+import { filter } from 'rxjs';
+
 import { Footer } from '../app/widget/common/footer/footer';
 import { Header } from '../app/widget/common/header/header';
 import { routes } from './app.routes';
+
 import AOS from 'aos';
-import { isPlatformBrowser } from '@angular/common';
+
 import { ChatBox } from './widget/shared-component/chat-box/chat-box';
 import { TawkChatService } from './services/tawk-chat';
+import { AccessibilityComponent } from './shared/accessibility/accessibility';
+import { AiChatbot } from './shared/ai-chatbot/ai-chatbot';
 
 export const appRoutes = routes;
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Footer, Header],
+  standalone: true,
+  imports: [RouterOutlet, Header, Footer, AccessibilityComponent, AiChatbot],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
@@ -24,12 +32,12 @@ export class App implements OnInit, AfterViewInit {
 
   constructor(
     private router: Router,
-    private tawkChatService: TawkChatService,
+
     @Inject(PLATFORM_ID) private platformId: object,
   ) {}
 
   ngOnInit(): void {
-    // Run AOS only in the browser
+    // Browser-only animations
     if (isPlatformBrowser(this.platformId)) {
       AOS.init({
         duration: 1000,
@@ -37,18 +45,15 @@ export class App implements OnInit, AfterViewInit {
         offset: 120,
       });
 
-      this.router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-          setTimeout(() => {
-            AOS.refresh();
-          }, 200);
-        }
+      this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+        AOS.refresh();
       });
     }
   }
 
   ngAfterViewInit(): void {
-    // Load Tawk.to chat widget only in the browser
-    this.tawkChatService.load();
+    // Load Tawk.to only in the browser
+    if (isPlatformBrowser(this.platformId)) {
+    }
   }
 }

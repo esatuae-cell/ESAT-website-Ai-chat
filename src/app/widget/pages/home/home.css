@@ -14,6 +14,7 @@
 .form-section {
   width: 20%;
   height: 65vh;
+  height: 61.5dvh;
   display: flex;
   justify-content: center;
   align-items: center;

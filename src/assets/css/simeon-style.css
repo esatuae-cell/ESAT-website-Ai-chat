@@ -1,195 +1,262 @@
-@import "swiper/css";
-@import "swiper/css/navigation";
-@import "swiper/css/pagination";
-@import "swiper/css/effect-fade";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
 
 /* @import "../fonts/icon-module/module-icon.css";   */
 
 body {
-	font-family: "Neo Sans", sans-serif;
+  font-family: 'Neo Sans', sans-serif;
 }
 p {
-	color: #5d5d5d;
+  color: #5d5d5d;
 }
 a {
-	text-decoration: none;
-	cursor: pointer;
+  text-decoration: none;
+  cursor: pointer;
 }
 .fw-3 {
-	font-weight: 300;
+  font-weight: 300;
 }
 .header-titile {
-	font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 .custom-line-h {
-	line-height: 32px;
+  line-height: 32px;
 }
 .title-f {
-	color: #122a4f;
+  color: #122a4f;
 }
 .mt-15 {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 .pt-10 {
-	padding-top: 10px;
+  padding-top: 10px;
 }
 .border-gray {
-	border: 1px solid #eee;
+  border: 1px solid #eee;
 }
 .pad-50 {
-	padding-top: 50px;
-	padding-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .f-18 {
-	font-size: 1.125rem;
+  font-size: 1.125rem;
 }
 .f-15 {
-	font-size: 0.9375rem;
+  font-size: 0.9375rem;
 }
 .gray-bg {
-	background: #eee;
+  background: #eee;
 }
 
 .modal-header {
-	justify-content: space-between;
+  justify-content: space-between;
 }
 
 .module-list li {
-	i {
-		padding-right: 10px;
-	}
+  i {
+    padding-right: 10px;
+  }
 }
 
 .ethics {
-	padding: 0px;
-	margin: 0px;
-	li {
-		list-style: none;
-		line-height: 35px;
-		i {
-			padding-right: 10px;
-		}
-	}
+  padding: 0px;
+  margin: 0px;
+  li {
+    list-style: none;
+    line-height: 35px;
+    i {
+      padding-right: 10px;
+    }
+  }
 }
 
 .styleHeader {
-	content: " ";
-	background: url(/assets/images/headingbackground.png);
-	width: 430px;
-	background-size: 100%;
-	background-repeat: no-repeat;
-	background-position-y: 47px;
-	padding-top: 2.2vh;
-	color: #122a4f;
+  content: ' ';
+  background: url(/assets/images/headingbackground.png);
+  width: 430px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position-y: 47px;
+  padding-top: 2.2vh;
+  color: #122a4f;
 }
 .styleHeader span {
-	font-weight: 300;
+  font-weight: 300;
 }
 
 .sub-title {
-	color: #071635;
-	font-size: 1.5rem;
-	font-weight: 500;
+  color: #071635;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 .section-padding {
-	padding-top: 90px;
-	padding-bottom: 90px;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 .home-title {
-	font-weight: 700;
-	color: #122a4f;
-	span {
-		display: inline-block;
-		font-weight: 400;
-	}
+  font-weight: 700;
+  color: #122a4f;
+  span {
+    display: inline-block;
+    font-weight: 400;
+  }
 }
 
 #footerLastAbout h3 {
-	text-transform: uppercase;
-	border-bottom: 3px solid #eee;
-	padding-bottom: 15px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #eee;
+  padding-bottom: 15px;
 }
 
 .env {
-	display: block;
-	i {
-		color: #122a4f;
-		font-size: 1.5rem;
-		padding-right: 10px;
-	}
-	a {
-		color: #757575;
-		font-size: 1.5rem;
-	}
+  display: block;
+  i {
+    color: #122a4f;
+    font-size: 1.5rem;
+    padding-right: 10px;
+  }
+  a {
+    color: #757575;
+    font-size: 1.5rem;
+  }
 }
 
 .error {
-	color: red;
-	font-weight: 400;
+  color: red;
+  font-weight: 400;
 }
 .bg-theme {
-	background-color: #757575;
+  background-color: #757575;
 }
 
 .bg-theme:hover {
-	background-color: #383838;
+  background-color: #383838;
 }
 
 .text-lblue {
-	color: #456e9b;
+  color: #456e9b;
 }
 
 .text-dblue {
-	color: #122a4f !important;
+  color: #122a4f !important;
 }
 
 .f-2 {
-	font-size: 2rem;
+  font-size: 2rem;
 }
 .f-1_5 {
-	font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 .f-1 {
-	font-size: 1rem;
+  font-size: 1rem;
 }
 
 .fw-600 {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .home-style {
-	position: absolute;
+  position: absolute;
 }
 
 .about-submenu a {
-	text-decoration: none;
-	color: #555;
-	position: relative;
+  text-decoration: none;
+  color: #555;
+  position: relative;
 }
 .about-submenu a:hover {
-	color: #5d5d5d;
+  color: #5d5d5d;
 }
 
 .home-style a {
-	color: #fff;
+  color: #fff;
 }
 
 .home-style a:hover {
-	color: #b3b3b3;
+  color: #b3b3b3;
 }
-
 
 #mob-navigation .modal-content {
-	background: #8c8c8f;
-	height: 50vh;
-	width: 95%;
-	overflow-x: scroll;
-	z-index: 9999;
-	position: fixed;
+  background: #8c8c8f;
+  height: 50vh;
+  width: 95%;
+  overflow-x: scroll;
+  z-index: 9999;
+  position: fixed;
 }
 
+.modal-backdrop {
+  position: static !important;
+}
 
+/* accessibility */
 
-.modal-backdrop{
-	position:static!important;
+/* =========================================
+   ESAT WEBSITE ACCESSIBILITY - GLOBAL CSS
+   Add to the bottom of src/styles.css
+========================================= */
+
+/* 1. INCREASE / DECREASE PAGE TEXT SIZE */
+html.a11y-text-scaled body {
+  zoom: var(--a11y-page-zoom, 1) !important;
+}
+
+/* 2. HIGH CONTRAST MODE */
+html.a11y-high-contrast body {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+html.a11y-high-contrast
+  body
+  :is(p, span, li, label, h1, h2, h3, h4, h5, h6, td, th, legend, dt, dd) {
+  color: #fff !important;
+}
+
+html.a11y-high-contrast
+  body
+  :is(section, article, main, aside, nav, header, footer, div, form, fieldset) {
+  background-color: #000 !important;
+  border-color: #fff !important;
+}
+
+html.a11y-high-contrast body a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+html.a11y-high-contrast body button,
+html.a11y-high-contrast body input,
+html.a11y-high-contrast body textarea,
+html.a11y-high-contrast body select {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+}
+
+/* Preserve a clear appearance for the accessibility panel */
+html.a11y-high-contrast .accessibility-panel {
+  background-color: #000 !important;
+  color: #fff !important;
+  border: 2px solid #fff !important;
+}
+
+/* 3. GRAYSCALE MODE */
+html.a11y-grayscale body {
+  filter: grayscale(100%) !important;
+}
+
+/* 4. HIGHLIGHT LINKS */
+html.a11y-highlight-links body a {
+  outline: 2px solid #ff0000 !important;
+  outline-offset: 2px !important;
+  text-decoration: underline !important;
+}
+
+/* 5. KEYBOARD FOCUS */
+body :focus-visible {
+  outline: 3px solid #ffbf47 !important;
+  outline-offset: 3px !important;
 }
